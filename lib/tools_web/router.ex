@@ -18,6 +18,9 @@ defmodule ToolsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/contact", ToolsController, :index
+    get "/tools", ToolsController, :tools
+    get "/tools/:id", ToolsController, :tool_details
   end
 
   # Other scopes may use custom stacks.

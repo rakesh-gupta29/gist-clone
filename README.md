@@ -6,7 +6,7 @@ First Pheonix App: a simple json server which serves AI tools lists as per query
 
 - create a new pheonix app
 - connect to the database using ecto. create a new database for dev env.
-- adding a new page to the app. here, it is contact us page
+- adding a new page to the app. here, it is contact us page. form submission are managed through this app.
 
 To start your Phoenix server:
 
