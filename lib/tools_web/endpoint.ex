@@ -48,6 +48,31 @@ defmodule ToolsWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
+
+  # this defines the list of plugs that the request will go through to process the request.
+  # finally giving the control to the router.
+
+  # function based plug
+  plug :print_req_details
+
+  # module based plug
+  plug ToolsWeb.Plugs.LogReq
+
   plug Plug.Session, @session_options
   plug ToolsWeb.Router
+
+  def print_req_details(conn, _opts) do
+    IO.puts("""
+    From function based plug
+    Verb: #{inspect(conn.method)}
+    Host: #{inspect(conn.host)}
+    """)
+
+    conn
+  end
 end
+
+# plugs can be defined at three places:
+# application/endpoint: common for the app. runs on all requests
+# router: for one router/group of routers i.e. within one router scope
+# controller: we can compose the plugs within the controller too to manage some tasks.
