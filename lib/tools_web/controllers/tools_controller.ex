@@ -20,4 +20,9 @@ defmodule ToolsWeb.ToolsController do
     # pass the id of tool from param
     render(conn, :tool_details, id: id, layout: false)
   end
+
+  def raw_entry(conn, %{"id" => id}) do
+    # pass the id of tool from param
+    json(conn, %{id: id})
+  end
 end

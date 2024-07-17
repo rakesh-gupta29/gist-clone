@@ -2,7 +2,8 @@ defmodule ToolsWeb.Router do
   use ToolsWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    # include the formats here that route should accept
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {ToolsWeb.Layouts, :root}
@@ -19,10 +20,19 @@ defmodule ToolsWeb.Router do
 
     # we use a macro for route definitions because at compile time, elixir will convert this to the if-else case statements
     # which will be optimised for runtime performance.
+
+    # see how one controller can have one HTML renderer attached with it and can have  multiple options attached as per the controller.
+
+    #  in here, pagecontroller calls the pagecontroller which goes to the pagehtml and renders the page_html templates.
+
     get "/", PageController, :home
+
+    # this will be a separate controller and can have its owne ToolsHTMl and hierarchy of layouts and templates.
     get "/contact", ToolsController, :index
     get "/tools", ToolsController, :tools
     get "/tools/:id", ToolsController, :tool_details
+
+    get "/tools/raw/:id", ToolsController, :raw_entry
   end
 
   # Other scopes may use custom stacks.
@@ -77,3 +87,5 @@ end
 
 # can a forward/background task retain the context of the request. like if I use the forward to schedule a background task
 # which will take an hour how can I preserve the context and then respond to that request.
+
+# refer to this page to see different approaches in which we can render the page or conclude the response. https://hexdocs.pm/phoenix/controllers.html#rendering

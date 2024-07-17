@@ -40,6 +40,9 @@ defmodule ToolsWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
+        # holds the component for rendering different types of formats.
+        # Tools.layout will be rendering the layouts from the components/layout folder.
+        # we can change this for entire app or as per the controller.
         layouts: [html: ToolsWeb.Layouts]
 
       import Plug.Conn
