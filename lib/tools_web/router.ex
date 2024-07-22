@@ -30,9 +30,8 @@ defmodule ToolsWeb.Router do
     # this will be a separate controller and can have its owne ToolsHTMl and hierarchy of layouts and templates.
     get "/contact", ToolsController, :index
     get "/tools", ToolsController, :tools
-    get "/tools/:id", ToolsController, :tool_details
-
-    get "/tools/raw/:id", ToolsController, :raw_entry
+    get "/tools/:name", ToolsController, :tool_details
+    get "/tools/raw/:name", ToolsController, :raw_entry
   end
 
   # Other scopes may use custom stacks.

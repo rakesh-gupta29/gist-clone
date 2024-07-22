@@ -1,3 +1,58 @@
-<section>
-  <h2>show the details of the tool with id: <%= @id %>!</h2>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found - Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html,
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="bg-white dark:bg-neutral-900 min-h-screen py-10">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center">
+          <h1
+            class="mb-4 text-4xl tracking-tight font-extrabold text-primary-600 dark:text-primary-500 dark:text-white"
+          >
+            <%= @item.title %>
+          </h1>
+
+          <p
+            class="mb-4 text-xl tracking-tight font-medium text-gray-900 dark:text-neutral-400"
+          >
+            <%= @item.tag %>
+          </p>
+        </div>
+      </div>
+      <div class="grid place-content-center place-items-center">
+        <button
+          type="button"
+          class="prev-btn py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        >
+          Go back
+        </button>
+      </div>
+    </section>
+  </body>
+  <script>
+    const btn = document.querySelector(".prev-btn");
+    btn.addEventListener("click", () => {
+      console.log("btn was clicked");
+      window.history.go(-1);
+    });
+  </script>
+</html>
